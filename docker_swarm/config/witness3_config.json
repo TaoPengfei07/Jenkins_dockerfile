@@ -1,0 +1,61 @@
+{
+    "version": 3,
+    "network": 3,
+    "node": {
+        "io_threads": 4,
+        "bg_threads": 4,
+        "sync_threads": 4,
+        "work_threads": 8
+    },
+    "rpc": {
+        "rpc": "false",
+        "rpc_addr": "127.0.0.1",
+        "rpc_port": 8765,
+        "rpc_control": "false"
+    },
+    "ws": {
+        "ws": "false",
+        "ws_addr": "127.0.0.1",
+        "ws_port": 8764,
+        "ws_control": "false"
+    },
+    "log": {
+        "console": "true",
+        "max_size": 167772160,
+        "rotation_size": 10485760,
+        "flush": "true",
+        "verbosity": "info",
+        "vmodule": ""
+    },
+    "p2p": {
+        "host": "",
+        "port": 30616,
+        "max_peers": 25,
+        "bootstrap_nodes": [
+		"czrnode://3F5349ACCE1D65FC455D3B23FC738C0DED5940ED8AD39602C9549E65A8F4B5A9@39.105.126.14:30614",
+		"czrnode://E00030837CCAAA78D5F46F7181E2D5213FFA8FE8E50ABF498446BD7D6F4A982B@47.101.214.190:30613",
+		"czrnode://0AE315CB43B1B76EDCE9577CCE2400B945B7752967D0BB6EDCEFD645A17AC9A4@39.108.134.192:30613"
+	],
+        "exemption_nodes": [],
+        "nat": "true"
+    },
+    "opencl": {
+        "opencl": "false",
+        "platform": 0,
+        "device": 0,
+        "threads": 1048576
+    },
+    "witness": {
+        "witness": "true",
+        "witness_account": "./witness3_account",
+        "password": "123",
+        "last_block": "",
+        "gas_price": "0"
+    },
+    "database": {
+        "cache": 8192,
+        "write_buffer": 2048,
+	"cache_filter": "false"
+    }
+}
+

@@ -1,0 +1,104 @@
+version: "3.3"
+services:
+  canonchain:
+    image: registry.cn-hangzhou.aliyuncs.com/canonchain/czr:ci
+    deploy: 
+      mode: global
+      restart_policy:
+        condition: none
+      # placement:
+      #   constraints:
+      #     - node.hostname == iZwz9c30e3v68b4a6mkhi0Z
+    ports:
+      - target: 30616
+        published: 30616
+        protocol: tcp
+        mode: host
+      - target: 30616
+        published: 30616
+        protocol: udp
+        mode: host
+    volumes:
+      - /data/canonchain_data:/canonchain_data
+      - /data/canonchain.type:/canonchain.type
+    configs: 
+      - witness1_config
+      - witness12_config
+      - witness3_config
+      - witness1_account
+      - witness12_account
+      - witness3_account
+      - witness14_account
+      - witness14_config
+      - witness6_account
+      - witness6_config
+      - witness7_account
+      - witness7_config
+      - witness2_config
+      - witness5_config
+      - witness9_config
+      - witness10_config
+      - witness13_config
+      - witness2_account
+      - witness5_account
+      - witness9_account
+      - witness10_account
+      - witness13_account
+      
+    command: sh -c "canonchain --daemon --data_path=/canonchain_data --config=/$$(cat /canonchain.type)_config --witness_account=/$$(cat /canonchain.type)_account"
+
+  # visualizer:
+  #   image: dockersamples/visualizer:stable
+  #   ports:
+  #     - 0.0.0.0:8066:8080
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   deploy:
+  #     placement:
+  #       constraints: [node.role == manager]
+   
+configs:
+  witness1_config:
+    file: ./config/witness1_config.json
+  witness12_config:
+    file: ./config/witness12_config.json
+  witness3_config:
+    file: ./config/witness3_config.json
+  witness1_account:
+    file: ./account/witness1_account.json
+  witness12_account:
+    file: ./account/witness12_account.json
+  witness3_account:
+    file: ./account/witness3_account.json
+  witness14_config:
+    file: ./config/witness14_config.json
+  witness6_config:
+    file: ./config/witness6_config.json
+  witness7_config:
+    file: ./config/witness7_config.json
+  witness7_account:
+    file: ./account/witness7_account.json
+  witness14_account:
+    file: ./account/witness14_account.json
+  witness6_account:
+    file: ./account/witness6_account.json
+  witness2_account:
+    file: ./account/witness2_account.json
+  witness5_account:
+    file: ./account/witness5_account.json
+  witness9_account:
+    file: ./account/witness9_account.json
+  witness10_account:
+    file: ./account/witness10_account.json
+  witness13_account:
+    file: ./account/witness13_account.json
+  witness2_config:
+    file: ./config/witness2_config.json
+  witness5_config:
+    file: ./config/witness5_config.json
+  witness9_config:
+    file: ./config/witness9_config.json
+  witness10_config:
+    file: ./config/witness10_config.json
+  witness13_config:
+    file: ./config/witness13_config.json
